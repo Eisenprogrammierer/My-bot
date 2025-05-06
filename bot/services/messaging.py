@@ -3,6 +3,7 @@ import time
 
 from typing import Optional, Union, List
 from telebot import TeleBot, types
+from telebot.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, Message
 from telebot.apihelper import ApiTelegramException
 from bot.database import crud
 from bot.database.connector import db_connector
@@ -18,15 +19,16 @@ class MessagingService:
     def __init__(self, bot: TeleBot):
         self.bot = bot
 
+
     def send_message(
         self,
         chat_id: Union[int, str],
         text: str,
         parse_mode: Optional[str] = "HTML",
-        reply_markup: Optional[types.ReplyMarkup] = None,
+        reply_markup: Optional[Union[InlineKeyboardMarkup, ReplyKeyboardMarkup]] = None,
         disable_web_page_preview: Optional[bool] = True,
         max_retries: int = 2
-    ) -> Optional[types.Message]:
+    ) -> Optional[Message]:
         for attempt in range(max_retries):
             try:
                 return self.bot.send_message(

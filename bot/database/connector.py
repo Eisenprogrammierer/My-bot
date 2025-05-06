@@ -127,3 +127,6 @@ def init_db(db_url: str = None, create_tables: bool = True) -> DatabaseConnector
 
 def get_db_session():
     return db_connector.session_factory()
+
+
+SessionLocal = db_connector.session_factory
