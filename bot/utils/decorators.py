@@ -36,7 +36,6 @@ def access_check(is_admin: bool = False) -> Callable:
                     )
                     return None
                 
-                # Проверка прав администратора
                 if is_admin and message.from_user.id not in Config.ADMIN_IDS:
                     logger.warning(
                         f"Unauthorized admin access attempt: {message.from_user.id}"
@@ -80,7 +79,6 @@ def error_handler(bot_instance=None) -> Callable:
                             "⚠️ Произошла ошибка при обработке запроса. "
                             "Администратор уже уведомлен."
                         )
-                        # Уведомление админов
                         for admin_id in Config.ADMIN_IDS:
                             bot_instance.send_message(
                                 admin_id,
