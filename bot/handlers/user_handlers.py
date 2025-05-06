@@ -1,7 +1,7 @@
 import logging
 
 from telebot import TeleBot, types
-from bot.database import crud
+from bot.database.crud import crud
 from bot.database.connector import db_connector
 from bot.utils.decorators import log_message
 from bot.utils.keyboards import get_main_menu_keyboard

@@ -8,8 +8,7 @@ class CRUD:
     Класс для операций с базой данных
     """
     
-    
-    @staticmethod
+    @staticmethod 
     def get_user(db: Session, chat_id: int) -> Optional[User]:
         return db.query(User).filter(User.chat_id == chat_id).first()
     

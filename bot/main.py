@@ -1,9 +1,13 @@
 import os
 import logging
-from bot.config import Config
-from bot.database.connector import init_db
-from bot.handlers import register_handlers
+
 from telebot import TeleBot
+
+from bot.database.connector import init_db, db_connector
+from bot.database.models import Base
+
+from bot.handlers import register_handlers
+from bot.config import Config
 
 
 def configure_logging():
@@ -19,9 +23,13 @@ def configure_logging():
     return logging.getLogger(__name__)
 
 def main():
+
     logger = configure_logging()
     logger.info("Starting bot initialization...")
-    
+
+
+    with db_connector.engine.begin() as connection:
+        Base.metadata.create_all(connection)
 
     bot_token = Config.BOT_TOKEN
     if not bot_token:
