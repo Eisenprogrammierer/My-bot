@@ -12,13 +12,14 @@ class Languages:
     RU = "ru"
 
 
-DEFAULT_LANGUAGE = Languages.EN
+
 
 
 class Config:
     BOT_TOKEN = os.getenv("BOT_TOKEN", "")
     DB_URL = os.getenv("DB_URL", "sqlite:///tickets.db")
     ADMIN_IDS = [int(id_) for id_ in os.getenv("ADMIN_IDS", "").split(",") if id_]
+    DEFAULT_LANGUAGE = Languages.EN
 
 
 class BotMessages:

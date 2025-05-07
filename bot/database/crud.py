@@ -23,12 +23,14 @@ class CRUD:
 
     @staticmethod
     def create_user(db: Session, chat_id: int, username: Optional[str] = None, 
-                   first_name: Optional[str] = None, last_name: Optional[str] = None) -> User:
+                   first_name: Optional[str] = None, last_name: Optional[str] = None,
+                    language: Optional[str] = "en") -> User:
         db_user = User(
             chat_id=chat_id,
             username=username,
             first_name=first_name,
-            last_name=last_name
+            last_name=last_name,
+            language=language
         )
         db.add(db_user)
         db.commit()
