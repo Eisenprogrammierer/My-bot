@@ -12,6 +12,12 @@ class CRUD:
     def get_user(db: Session, chat_id: int) -> Optional[User]:
         return db.query(User).filter(User.chat_id == chat_id).first()
     
+    
+    @staticmethod
+    def get_user_language(db: Session, user_id: int) -> str:
+        user = db.query(User).filter(User.id == user_id).first()
+        return user.language if user else Config.DEFAULT_LANGUAGE 
+
 
     @staticmethod
     def create_user(db: Session, chat_id: int, username: Optional[str] = None, 

@@ -82,7 +82,6 @@ class BotMessages:
         Der Administrator wird Ihnen so bald wie möglich antworten."
             }
 
-
     ADMIN_NOTIFICATION = {
             Language.RU : "📩 Новое обращение #{ticket_id}\n\
         👤 Пользователь: @{username} (ID: {user_id})\n\
@@ -96,4 +95,10 @@ class BotMessages:
         👤 Benutzer: @{username} (ID: {user_id})\n\
         📅 Datum: {date}\n\n\
         📝 Text:\n{message}"
+            }
+
+    LANGUAGE_SELECT = {
+            Languages.RU: "🌐 Выберите язык:",
+            Languages.EN: "🌐 Please select language:",
+            Languages.DE: "🌐 Bitte wählen Sie die Sprache:"
             }

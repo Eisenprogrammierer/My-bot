@@ -33,11 +33,25 @@ def register_user_handlers(bot: TeleBot):
                 )
                 logger.info(f"New user registered: {user}")
             
-            bot.send_message(
-                message.chat.id,
-                BotMessages.WELCOME_MESSAGE,
-                reply_markup=get_main_menu_keyboard()
-            )
+                bot.send_message(
+                    message.chat.id, 
+                    Config.BotMessages.LANGUAGE_SELECT[Config.DEFAULT_LANGUAGE],
+                    reply_markup=get_language_keyboard()
+                )
+            else:
+                bot.send_message(message.chat.id, Config.BotMessages.WELCOME[user.language])
+    
+
+    @bot.callback_query_handler(func=lambda call: call.data.startswith('lang_'))
+    def handle_language_selection(call: types.CallbackQuery):
+        lang = call.data.split('_')[1]
+        with db_connector.session_scope() as session:
+            crud.update_user(session, call.from_user.id, {"language": lang})
+    
+        bot.send_message(
+            call.message.chat.id,
+            Config.BotMessages.WELCOME[lang]
+        )
 
 
     @bot.message_handler(commands=['mytickets'])
