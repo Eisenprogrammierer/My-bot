@@ -6,7 +6,7 @@ from typing import Dict, Any
 load_dotenv()
 
 
-class Laguages:
+class Languages:
     EN = "en"
     DE = "de"
     RU = "ru"
@@ -29,7 +29,7 @@ class BotMessages:
         🛠 Доступные команды:\n\
         /help - показать это сообщение\n\
         /mytickets - мои обращения",
-            Languages.EN : "👋 Welcome to customer service!\n\n\
+            Languages.EN : "👋 Welcome to support service!\n\n\
         📨 Send your message and an administrator will get back to you\
         as soon as possible. \n\n\
         🛠 Available commands:\n\
@@ -37,10 +37,10 @@ class BotMessages:
         /mytickets - my tickets",
             Languages.DE : "👋 Willkommen in unserem Support-Team!\n\n\
         📨 Senden Sie Ihre Nachricht, und ein Administrator wird sich mit Ihnen in Verbindung setzen\
-        so schnell wie möglich zurückmelden.\n\n\
+        so schnell wie möglich antworten.\n\n\
         🛠 Verfügbare Befehle:\n\
         /help - diese Nachricht anzeigen.\n\
-        /mytickets - meine Appelle"
+        /mytickets - meine Anfragen"
         }
 
     BANNED_MESSAGE = {
@@ -50,21 +50,21 @@ class BotMessages:
             }
 
     ACCESS_DENIED = {
-            Language.RU : "⛔ Доступ запрещен",
-            Language.EN : "⛔ Access denied",
-            Language.DE : "⛔ Zugriff verweigert"
+            Languages.RU : "⛔ Доступ запрещен",
+            Languages.EN : "⛔ Access denied",
+            Languages.DE : "⛔ Zugriff verweigert"
             }
 
     NO_TICKETS = {
-            Language.RU : "📭 У вас пока нет обращений",
-            Language.EN : "📭 You have no tickets yet",
-            Language.DE : "📭 Sie haben noch keine Appelle"
+            Languages.RU : "📭 У вас пока нет обращений",
+            Languages.EN : "📭 You have no tickets yet",
+            Languages.DE : "📭 Sie haben noch keine Anfragen"
             }
 
     TICKETS_HEADER = {
-            Language.RU : "📂 Ваши обращения:",
-            Language.EN : "📂 Your tickets:",
-            Language.DE : "📂 Ihre Appelle:"
+            Languages.RU : "📂 Ваши обращения:",
+            Languages.EN : "📂 Your tickets:",
+            Languages.DE : "📂 Ihre Anfragen:"
             }
 
     TICKET_ITEM = (
@@ -74,24 +74,24 @@ class BotMessages:
     )
 
     TICKET_CREATED = {
-            Language.RU : "✅ Ваше обращение принято под номером #{ticket_id}\n\
+            Languages.RU : "✅ Ваше обращение принято под номером #{ticket_id}\n\
         Администратор ответит вам в ближайшее время.",
-            Language.EN : "✅ Your ticket has been accepted under #{ticket_id}\n\
+            Languages.EN : "✅ Your ticket #{ticket_id} has been created\n\
         The administrator will reply to you as soon as possible.",
-            Language.DE : "✅ Ihre Appelle wurde unter #{ticket_id} angenommen\n\
+            Languages.DE : "✅ Ihr Anfrag wurde unter #{ticket_id} angenommen\n\
         Der Administrator wird Ihnen so bald wie möglich antworten."
             }
 
     ADMIN_NOTIFICATION = {
-            Language.RU : "📩 Новое обращение #{ticket_id}\n\
+            Languages.RU : "📩 Новое обращение #{ticket_id}\n\
         👤 Пользователь: @{username} (ID: {user_id})\n\
         📅 Дата: {date}\n\n\
         📝 Текст:\n{message}",
-            Language.EN : "📩 New ticket #{ticket_id}\n\
+            Languages.EN : "📩 New ticket #{ticket_id}\n\
         👤 User: @{username} (ID: {user_id})\n\
         📅 Date: {date}\n\n\
         📝 Text:\n{message}",
-            Language.DE : "📩 Neue Appelle #{ticket_id}\n\
+            Languages.DE : "📩 Neu Anfrag #{ticket_id}\n\
         👤 Benutzer: @{username} (ID: {user_id})\n\
         📅 Datum: {date}\n\n\
         📝 Text:\n{message}"

@@ -2,6 +2,8 @@ from typing import Optional, List, Dict, Any
 from sqlalchemy.orm import Session
 from .models import User, Ticket, AdminLog
 from .connector import SessionLocal
+from bot.config import Config
+
 
 class CRUD:
     """
