@@ -65,3 +65,13 @@ def get_admin_main_keyboard() -> types.ReplyKeyboardMarkup:
     ]
     keyboard.add(*buttons)
     return keyboard
+
+
+def get_language_keyboard() -> types.InlineKeyboardMarkup:
+    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    keyboard.add(
+        types.InlineKeyboardButton("English 🇬🇧", callback_data="lang_en"),
+        types.InlineKeyboardButton("Deutsch 🇩🇪", callback_data="lang_de"),
+        types.InlineKeyboardButton("Русский 🇷🇺", callback_data="lang_ru")
+    )
+    return keyboard
