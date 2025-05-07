@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, Text, DateTime, func
 from sqlalchemy.ext.declarative import declarative_base
+from bot.config import Config
 
 
 Base = declarative_base()
@@ -18,6 +19,7 @@ class User(Base):
         is_banned (bool): Флаг блокировки пользователя
         created_at (DateTime): Время создания записи
         updated_at (DateTime): Время последнего обновления
+        language (str): Язык пользователя
     """
     __tablename__ = 'users'
 
@@ -29,6 +31,7 @@ class User(Base):
     is_banned = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+    language = Column(String(2), default=Config.DEFAULT_LANGUAGE)
 
     def __repr__(self):
         return f"<User(id={self.id}, username=@{self.username or 'N/A'})>"
